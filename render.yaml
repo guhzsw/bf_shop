@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bf-shop
+    env: docker
+    buildCommand: docker build -t bf-shop .
+    startCommand: docker run -p $PORT:80 -e DB_NAME=${DB_NAME} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} bf-shop
+    envVars:
+      - key: DB_NAME
+        value: bf_shop
+      - key: DB_USER
+        value: bf_shop_user
+      - key: DB_PASS
+        generateValue: true
